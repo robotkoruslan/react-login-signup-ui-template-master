@@ -1,10 +1,27 @@
 import React, { Component , } from "react";
 import { FormGroup, Label, Input } from "reactstrap";
+import axios from 'axios';
+
 
 export default class Login extends Component {
- render(){
-     return(
-         <form onSubmit={this.handleSubmit}>
+    handleSubmit = e => {
+        e.preventDefault();
+        const data = {
+            email: this.email,
+            password: this.password
+        }
+        axios.post('http://localhost:3001/contacts', data)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    render(){
+        return(
+            <form onSubmit={this.handleSubmit}>
              <h3>Login</h3>
 
              <FormGroup>
@@ -24,7 +41,7 @@ export default class Login extends Component {
                  <Input type="password" className="" placeholder="Confirm Password" 
                  onChange={e => this.confirmPassword = e.target.value}/>
              </FormGroup>
-             <button className="btn btn-primary btn-block">Sign Up</button>
+             <button className="btn btn-primary btn-block">Login</button>
          </form> 
      )
  }

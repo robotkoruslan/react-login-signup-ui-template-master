@@ -1,5 +1,5 @@
 {
-  "contacts": [
+  "register": [
     {
       "name": "Friend",
       "phone": "+38099565564",
@@ -39,6 +39,50 @@
       "email": "433",
       "friends": "33232",
       "id": 13
+    },
+    {
+      "email": "1@1.r",
+      "password": "1",
+      "id": 14
+    },
+    {
+      "email": "1@1.com",
+      "password": "1",
+      "id": 15
+    },
+    {
+      "email": "1@1.com",
+      "password": "1",
+      "id": 16
+    },
+    {
+      "email": "1@1.ru",
+      "password": "1",
+      "id": 17
+    },
+    {
+      "first_name": "1",
+      "last_name": "1",
+      "email": "1@1.ei",
+      "password": "1",
+      "confirm_password": "1",
+      "id": 18
+    },
+    {
+      "first_name": "1",
+      "last_name": "1",
+      "email": "1@1.ru",
+      "password": "1",
+      "password_confirm": "1",
+      "id": 19
+    },
+    {
+      "first_name": "1",
+      "last_name": "1",
+      "email": "1@1.ru",
+      "password": "1",
+      "password_confirm": "2",
+      "id": 20
     }
   ]
 }

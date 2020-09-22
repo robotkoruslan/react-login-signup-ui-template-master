@@ -1,106 +1,67 @@
 import React, { Component } from "react";
-import { FormGroup,  Label, Input,  Button } from 'reactstrap';
+import { FormGroup, Label, Input, Button } from 'reactstrap';
 import axios from 'axios';
 
 export default class SignUp extends Component {
-    state = {
-        contacts: [],
-        friend: [],
-        newContactData: {
-            name: '',
-            phone: '',
-            age: '',
-            email: '',
-            password: ''
-        },
-        newContactModal: false,
-        editContactModal: false
-    }
-    async componentWillMount() {
-        this._refreshList()
 
-    }
 
-    toggleNewContactModal() {
-        this.setState({
-          newContactModal: !this.state.newContactModal
-        }, console.log(!this.newContactModal))
-      }
-      addContact() {
-        axios.post('http://localhost:3001/contacts', this.state.newContactData).then((response) => {
-          let { contacts } = this.state;
-          contacts.push(response.data);
-    
-          this.setState({
-            contacts, newContactModal: false, newContactData: {
-              name: '',
-              phone: '',
-              age: '',
-              email: '',
-              password: ''
+    handleSubmit = e => {
+        e.preventDefault();
+        const data = {
+            first_name: this.firstName,
+            last_name: this.lastName,
+            email: this.email,
+            password: this.password,
+            password_confirm: this.confirmPassword
+        }
+        axios.post('http://localhost:3001/register', data).then(
+            res => {
             }
-          })
-        })
-      }
-      _refreshList() {
-        axios.get('http://localhost:3001/contacts').then((response) => {
-          this.setState({
-            contacts: response.data
-          })
-        })
-      }
-    
+        ).catch(
+            err => {
+                console.log(err);
+            }
+        )
+        console.log(data);
+    }
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <h3>Sign Up</h3>
 
                 <FormGroup>
-                    <Label for="nameUser">Full name</Label>
-                    <Input type="text" id="nameUser" placeholder="Full name" value={this.state.newContactData.name} onChange={(e) => {
-                        let { newContactData } = this.state;
-                        newContactData.name = e.target.value
-                        this.setState({ newContactData })
-                    }} />
+                    <Label for="firstName">First name</Label>
+                    <Input type="text" id="firstName" placeholder="First name"
+                        onChange={e => this.firstName = e.target.value} />
                 </FormGroup>
+
                 <FormGroup>
-                    <Label for="phoneUser">Phone</Label>
-                    <Input type="text" id="phoneUser" placeholder="Phone" value={this.state.newContactData.phone} onChange={(e) => {
-                        let { newContactData } = this.state;
-                        newContactData.phone = e.target.value
-                        this.setState({ newContactData })
-                    }} />
+                    <Label for="lastName">Last name</Label>
+                    <Input type="text" id="lastName" placeholder="Last name"
+                        onChange={e => this.lastName = e.target.value} />
                 </FormGroup>
+
                 <FormGroup>
-                    <Label for="age">Age</Label>
-                    <Input id="age" placeholder="Age" value={this.state.newContactData.age} onChange={(e) => {
-                        let { newContactData } = this.state;
-                        newContactData.age = e.target.value
-                        this.setState({ newContactData })
-                    }} />
+                    <Label for="email">Email</Label>
+                    <Input type="email" id="email" placeholder="Email"
+                        onChange={e => this.email = e.target.value} />
                 </FormGroup>
+
                 <FormGroup>
-                    <Label for="exampleEmail">Email</Label>
-                    <Input type="email" id="exampleEmail" placeholder="Email" value={this.state.newContactData.email} onChange={(e) => {
-                        let { newContactData } = this.state;
-                        newContactData.email = e.target.value
-                        this.setState({ newContactData })
-                    }} />
+                    <Label for="password">Password</Label>
+                    <Input type="password" id="password" placeholder="Password"
+                        onChange={e => this.password = e.target.value} />
                 </FormGroup>
+
                 <FormGroup>
-                <Label for="examplePassword">Password</Label>
-                    <Input type="password" name="password" id="examplePassword" placeholder="Password" value={this.state.newContactData.password} onChange={(e) => {
-                        let { newContactData } = this.state;
-                        newContactData.password = e.target.value
-                        this.setState({ newContactData })
-                    }} />
+                    <Label for="confirmPassword">Confirm Password</Label>
+                    <Input type="password" id="confirmPassword" placeholder="Confirm Password"
+                        onChange={e => this.confirmPassword = e.target.value} />
                 </FormGroup>
-                <Button color="primary" type="submit"  className="btn btn-primary btn-block" href="/" onClick={this.addContact.bind(this)}>Sign Up</Button>{' '}
-                <p className="forgot-password text-right">
-                    Already registered <a href="sign-in">sign in?</a>
-                </p>
-                
+
+                <Button className="btn btn-primary btn-block">Login</Button>
+
             </form>
         );
     }
