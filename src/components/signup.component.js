@@ -14,8 +14,9 @@ export default class SignUp extends Component {
             password: this.password,
             password_confirm: this.confirmPassword
         }
-        axios.post('http://localhost:3001/register', data).then(
+        axios.post('register', data).then(
             res => {
+                console.log(res)
             }
         ).catch(
             err => {

@@ -10,9 +10,10 @@ export default class Login extends Component {
             email: this.email,
             password: this.password
         }
-        axios.post('http://localhost:3001/contacts', data)
+        axios.post('login', data)
             .then(res => {
-                console.log(res);
+                localStorage.setItem('email', res.data.email)
+                // console.log(res.data.email);
             })
             .catch(err => {
                 console.log(err);
