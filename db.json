@@ -115,6 +115,39 @@
       "password": "12",
       "password_confirm": "12",
       "id": 24
+    },
+    {
+      "email": "register@sd.ru",
+      "password": "12",
+      "id": 25
+    },
+    {
+      "params": {
+        "email": "1@1.com",
+        "password": "1"
+      },
+      "id": 26
+    },
+    {
+      "params": {
+        "email": "1@1.com",
+        "password": "1"
+      },
+      "id": 27
+    },
+    {
+      "params": {
+        "email": "1@1.com",
+        "password": "1"
+      },
+      "id": 28
+    },
+    {
+      "params": {
+        "email": "1@1.com",
+        "password": "22"
+      },
+      "id": 29
     }
   ],
   "login": [
@@ -302,6 +335,31 @@
       "email": "1@1.com",
       "password": "e",
       "id": 40
+    },
+    {
+      "email": "22@qw.ru",
+      "password": "1",
+      "id": 41
+    },
+    {
+      "email": "22@qw.ru",
+      "password": "1",
+      "id": 42
+    },
+    {
+      "email": "22@qw.ru",
+      "password": "2",
+      "id": 43
+    },
+    {
+      "email": "23@23.ru",
+      "password": "222",
+      "id": 44
+    },
+    {
+      "email": "23@23.ru",
+      "password": "eewq",
+      "id": 45
     }
   ],
   "user": []
