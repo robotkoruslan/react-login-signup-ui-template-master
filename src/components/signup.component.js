@@ -14,7 +14,7 @@ export default class SignUp extends Component {
             password: this.password,
             password_confirm: this.confirmPassword
         }
-        axios.post('register', data).then(
+        axios.post('contacts', data).then(
             res => {
                 console.log(res)
             }

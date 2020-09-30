@@ -45,7 +45,7 @@ export default class Users extends Component {
         }
       
         addContact() {
-          axios.post('http://localhost:3001/contacts', this.state.newContactData).then((response) => {
+          axios.post('contacts', this.state.newContactData).then((response) => {
             let { contacts } = this.state;
             contacts.push(response.data);
       
@@ -63,7 +63,7 @@ export default class Users extends Component {
         updateContact() {
           let { name, phone, age, email, friends } = this.state.editContactData;
       
-          axios.put('http://localhost:3001/contacts/' + this.state.editContactData.id, {
+          axios.put('contacts' + this.state.editContactData.id, {
             name, phone, age, email, friends
           }).then((response) => {
             console.log(response.data);
@@ -79,12 +79,12 @@ export default class Users extends Component {
           })
         }
         deleteContact(id) {
-          axios.delete('http://localhost:3001/contacts/' + id).then((response) => {
+          axios.delete('contacts' + id).then((response) => {
             this._refreshList()
           })
         }
         _refreshList() {
-          axios.get('http://localhost:3001/contacts').then((response) => {
+          axios.get('contacts').then((response) => {
             this.setState({
               contacts: response.data
             })
