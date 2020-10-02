@@ -32,7 +32,7 @@ export default class Users extends Component {
   toggleNewContactModal() {
     this.setState({
       newContactModal: !this.state.newContactModal
-    }, console.log(!this.newContactModal))
+    })
   }
 
 
@@ -60,7 +60,7 @@ export default class Users extends Component {
   updateContact() {
     let { first_name, last_name, email, password } = this.state.editContactData;
 
-    axios.put('contacts' + this.state.editContactData.id, {
+    axios.put('contacts/' + this.state.editContactData.id, {
       first_name, last_name, email, password
     }).then((response) => {
       console.log(response.data);
@@ -76,11 +76,12 @@ export default class Users extends Component {
     })
   }
   deleteContact(id) {
-    axios.delete('contacts' + id).then((response) => {
+    axios.delete('contacts/' + id).then((response) => {
       this._refreshList()
     })
   }
   _refreshList() {
+   
     axios.get('contacts').then((response) => {
       this.setState({
         contacts: response.data
@@ -140,7 +141,7 @@ export default class Users extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label for="password">Friends</Label>
+              <Label for="password">Password</Label>
               <Input id="password" value={this.state.newContactData.password} onChange={(e) => {
                 let { newContactData } = this.state;
                 newContactData.password = e.target.value
