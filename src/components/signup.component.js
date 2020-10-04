@@ -16,7 +16,7 @@ export default class SignUp extends Component {
         }
         axios.post('contacts', data).then(
             res => {
-                console.log(res)
+                console.log(res.body)
             }
         ).catch(
             err => {

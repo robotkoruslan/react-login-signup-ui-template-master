@@ -6,15 +6,18 @@ import axios from 'axios';
 
 export default class Login extends Component {
 
+  
+
     handleSubmit = e => {
         e.preventDefault();
         axios.get('contacts', {
-            params: {
-                email: this.email,
-                password: this.password
+                params: {
+                    email: this.email,
+                    password: this.password
+                }
             }
-        })
-            .then(res => console.log(res))
+        )
+            .then(res => console.log(res.data[0].email + res.data[0].password))
             .catch(err => console.log(err))
     }
 
